@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.webapp.dto.Board;
 
 @Controller
-public class HomeController {
+public class Exam01Controller {
 	private static final Logger logger = 
-			LoggerFactory.getLogger(HomeController.class);
+			LoggerFactory.getLogger(Exam01Controller.class);
 	
-	@RequestMapping("/")
+	@RequestMapping("/home")
 	public String home() {
 		logger.error("error 메시지");
 		logger.warn("warn 메시지");
@@ -27,7 +27,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping("/boardlist")
+	@RequestMapping("/exam01/boardlist")
 	public String getBoardList(HttpServletRequest request, HttpServletResponse response) {
 		//요청 내용을 확인
 		System.out.println("클라이언트 IP:" + request.getRemoteHost());
@@ -44,7 +44,7 @@ public class HomeController {
 		}
 		request.setAttribute("list", list);
 		
-		//뷰 이름 리턴
-		return "boardlist";
+		//뷰 이름 리턴 , 슬래쉬 안들어가는 이유는 프리픽스가 있어서
+		return "exam01/boardlist";
 	}
 }
